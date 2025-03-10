@@ -1,0 +1,8 @@
+python-dotenv
+llama-parse
+llama-index>=0.10.0
+openai>=1.0.0
+pathlib
+fastapi
+uvicorn
+pydantic
