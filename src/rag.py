@@ -56,7 +56,7 @@ class RAGChat:
         
         # Initialize OpenAI with GPT-4 and embedding models
         self.llm = OpenAI(
-                        model="gpt-4o",
+                        model="o3-mini-2025-01-31",
                         temperature=0.3,
                         api_key=os.environ["OPENAI_API_KEY"],
                         system_prompt=self.system_prompt
