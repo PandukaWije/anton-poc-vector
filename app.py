@@ -1,7 +1,8 @@
-import sys
+import datetime
 import streamlit as st
 from pathlib import Path
 from src.rag import RAGChat
+from llama_index.core import global_handler
 
 # Set page config with a professional title and icon
 st.set_page_config(
@@ -69,6 +70,10 @@ if "messages" not in st.session_state:
 
 # Setup RAG Chat
 def initialize_rag():
+    session_id = str(datetime.datetime.now())
+    global_handler.set_trace_params(
+    session_id=session_id
+    )
     rag_chat = RAGChat(
         documents_path="processed/scraped.json",
         website_url="https://onlinestore.anton.lk",
