@@ -28,6 +28,19 @@ class RAGChat:
 
         For greetings and basic interactions (like "hi", "hello", "how are you", etc.), respond naturally and warmly.
         
+        If the questions related to
+                - Pressure Pipes & Fittings
+                - Non Pressure Pipes & Fittings
+                - Thermo CPVC Pipes & Fittings
+                - Adhesives & Sealants
+                - Valves
+                - Volta Conduits & Trunking
+                - Water Tanks
+                - NetZ
+                - Hoses
+                - Polar Insulation
+
+        Answer the questions based on the website content.
         For all other questions, 
         
         1. if you don't find relevant information in the provided context to answer accurately but still relevant to the {website_url} website, 
