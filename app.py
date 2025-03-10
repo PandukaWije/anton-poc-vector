@@ -1,8 +1,12 @@
 import datetime
+import uuid
 import streamlit as st
 from pathlib import Path
 from src.rag import RAGChat
-from llama_index.core import global_handler
+# from llama_index.core import global_handler
+from langfuse.llama_index import LlamaIndexInstrumentor
+
+instrumentor = LlamaIndexInstrumentor()
 
 # Set page config with a professional title and icon
 st.set_page_config(
@@ -69,11 +73,10 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # Setup RAG Chat
+@st.cache_resource
 def initialize_rag():
+    user_id = str(uuid.uuid4())
     session_id = str(datetime.datetime.now())
-    global_handler.set_trace_params(
-    session_id=session_id
-    )
     rag_chat = RAGChat(
         documents_path="processed/scraped.json",
         website_url="https://onlinestore.anton.lk",
@@ -81,9 +84,9 @@ def initialize_rag():
         business_name="Anton"
     )
     rag_chat.create_index()
-    return rag_chat
+    return rag_chat, user_id, session_id
 
-rag_chat = initialize_rag()
+rag_chat, user_id, session_id = initialize_rag()
 
 # Header with Anton branding
 col1, col2 = st.columns([1, 4])
@@ -124,7 +127,11 @@ if prompt := st.chat_input("Ask me anything about Anton's products..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
     
     with st.chat_message("assistant", avatar="🛒"):
-        response = rag_chat.chat(prompt)
+        with instrumentor.observe(
+                                user_id=user_id,
+                                session_id=session_id
+                                ) as trace:
+            response = rag_chat.chat(prompt)
         st.markdown(response)
     st.session_state.messages.append({"role": "assistant", "content": response})
 
