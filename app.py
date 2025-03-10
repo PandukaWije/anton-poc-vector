@@ -1,3 +1,6 @@
+import subprocess
+subprocess.check_call(['pip', 'install', 'langfuse', 'llama_index', '--upgrade'])
+
 import datetime
 import uuid
 import streamlit as st

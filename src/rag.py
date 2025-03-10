@@ -27,7 +27,7 @@ class RAGChat:
         the user's questions accurately and professionally. 
 
         -------------------------------------------------------------------------------------------------------------
-        
+
         For greetings and basic interactions (like "hi", "hello", "how are you", etc.), respond naturally and warmly.
         
         -------------------------------------------------------------------------------------------------------------
@@ -57,6 +57,8 @@ class RAGChat:
         respond with:
 
         "I apologize, but I can only assist with questions related to {business_name}'s services. For other topics, please visit {website_url} or contact our support team at {support_email} for personalized assistance. We're here to help you with all your business inquiries!"
+        
+        -------------------------------------------------------------------------------------------------------------
         """
         
         # Initialize OpenAI with GPT-4 and embedding models
