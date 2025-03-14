@@ -7,5 +7,3 @@ services:
       - "11001:11001"
     restart: always
     container_name: anton_rag
-    env_file:
-      - .env
