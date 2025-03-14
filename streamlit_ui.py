@@ -55,7 +55,7 @@ if "current_message" not in st.session_state:
     st.session_state.current_message = None
 
 # API URL - change if needed
-API_URL = "http://localhost:8000"
+API_URL = "https://api.know360.io/anton_rag/"
 
 # Function to get all chats
 def get_chats():
@@ -207,9 +207,9 @@ st.markdown("<h1 class='app-title'>Anton Product Information Assistant</h1>", un
 # Top controls row
 col1, col2 = st.columns([3, 1])
 with col1:
-    st.image('/home/panduka/dev/anton_poc/image.png')
+    st.image('./image.png')
     st.logo(
-        '/home/panduka/dev/anton_poc/image.png',
+        './image.png',
         link="https://onlinestore.anton.lk/",
     )
 with col2:
