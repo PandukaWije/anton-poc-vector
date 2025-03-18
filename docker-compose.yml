@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  anton_rag:
+    build: .
+    ports:
+      - "11001:11001"
+    restart: always
+    container_name: anton_rag
+    env_file:
+      - .env
